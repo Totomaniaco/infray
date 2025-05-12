@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Index</title>
+</head>
+<body>
+    <header>  
+        <div class="logo-container">
+            <img src="imagenes/logo.jpg" alt="Logo TEA" class="logo">
+        </div>
+        <h1>TEA (TRANSTORNO DEL ESPECTRO AUTISTA)</h1>
+    </header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="videos.html">Videos</a>
+        <a href="juegos.html">Juegos interactivos</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+    
+    <!-- Carrusel de imágenes -->
+    <div class="carousel">
+        <button class="carousel-control prev">&#10094;</button>
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="imagenes/carrusel1.jpg" alt="Imagen 1 sobre TEA">
+            </div>
+            <div class="carousel-item">
+                <img src="imagenes/carrusel2.jpg" alt="Imagen 2 sobre TEA">
+            </div>
+            <div class="carousel-item">
+                <img src="imagenes/carrusel3.jpg" alt="Imagen 3 sobre TEA">
+            </div>
+        </div>
+        <button class="carousel-control next">&#10095;</button>
+        <div class="carousel-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+        </div>
+    </div>
+    
+    <main>
+        <h2>Contenido Principal</h2>
+        <p>El Trastorno del Espectro Autista (TEA) es una condición del neurodesarrollo que afecta 
+            la comunicación, interacción social y comportamiento. En este sitio encontrarás 
+            información, recursos y herramientas para comprender mejor el TEA y apoyar a las 
+            personas que viven con esta condición.</p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Todos los derechos reservados. Sitio sobre TEA</p>
+    </footer>
+
+    <script>
+        // JavaScript para el funcionamiento del carrusel
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselInner = document.querySelector('.carousel-inner');
+            const items = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.carousel-control.prev');
+            const nextBtn = document.querySelector('.carousel-control.next');
+            
+            let currentIndex = 0;
+            const totalItems = items.length;
+            
+            function updateCarousel() {
+                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Actualizar indicadores
+                indicators.forEach((indicator, index) => {
+                    if(index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Navegación con botones
+            nextBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                updateCarousel();
+            });
+            
+        
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
