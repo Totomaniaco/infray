@@ -1,2 +1,0 @@
-# infray.com
-autismo
